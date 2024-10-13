@@ -1,0 +1,569 @@
+/* Definir variables CSS para facilitar el manejo de tamaños de fuente */
+:root {
+    --font-base: 16px;
+    --font-small: 0.875rem; /* 14px */
+    --font-medium: 1rem;     /* 16px */
+    --font-large: 1.25rem;   /* 20px */
+    --font-xlarge: 2rem;     /* 32px */
+}
+
+/* General */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    font-size: var(--font-base);
+    line-height: 1.6;
+}
+
+/* Encabezado */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+    box-shadow: 0px 4px 2px -2px gray;
+}
+
+.logo img {
+    max-height: 60px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    position: relative;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.8);
+    font-weight: bold;
+    padding: 10px 15px;
+    display: block;
+    font-size: clamp(1rem, 2vw, 1.125rem); /* Adaptativo */
+}
+
+nav ul li a:hover {
+    color: rgba(0, 123, 255, 0.8);
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+nav ul li:hover .dropdown {
+    display: block;
+}
+
+.dropdown li {
+    white-space: nowrap;
+}
+
+.dropdown li a {
+    padding: 10px;
+    color: rgba(123, 83, 83, 0.7);
+    font-size: clamp(0.875rem, 1.5vw, 1rem); /* Adaptativo */
+}
+
+.dropdown li a:hover {
+    background-color: rgba(0, 123, 255, 0.2);
+    color: rgba(0, 123, 255, 0.8);
+}
+
+/* Carrusel */
+.carousel {
+    position: relative;
+    width: 100%; /* Asegura que el carrusel ocupe todo el ancho */
+    overflow: hidden; /* Oculta cualquier contenido que se desborde */
+    padding: 0; /* Elimina el padding */
+    margin: 0; /* Elimina el margen */
+}
+
+.slides {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: 0; /* Elimina márgenes adicionales */
+    padding: 0; /* Elimina padding adicional */
+}
+
+.slide {
+    min-width: 100%; /* Cada slide ocupará el 100% del ancho del carrusel */
+    transition: transform 0.5s ease-in-out;
+    margin: 0; /* Asegura que no haya márgenes entre las slides */
+    padding: 0; /* Asegura que no haya padding en las slides */
+}
+
+.slide img {
+    width: 100%;
+    height: auto;
+    display: block; /* Asegura que no haya espacio debajo de la imagen */
+    margin: 0; /* Elimina cualquier margen alrededor de la imagen */
+    padding: 0; /* Elimina cualquier padding alrededor de la imagen */
+}
+
+
+/* Textos en carrusel */
+.caption {
+    position: absolute;
+    color: white;
+    font-size: clamp(1.5rem, 3vw, 2.25rem); 
+    font-weight: bold;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    opacity: 0; 
+    animation: fadeIn 1s forwards; 
+}
+
+/* Definición de la animación */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Posiciones específicas para cada caption con animaciones diferentes */
+.caption1 {
+    top: 10%; 
+    left: 50%;
+    transform: translate(0, 0);
+    animation-delay: 0.3s; 
+}
+
+.caption1-mon {
+    top: 20%; 
+    left: 25%; 
+    transform: translate(0, 0);
+    animation-delay: 0.3s; 
+}
+
+.caption2 {
+    top: 30%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    animation-delay: 0.3s;
+}
+
+.caption3 {
+    bottom: 10%;
+    right: 0%; 
+    transform: translate(0, 0);
+    animation-delay: 0.3s;
+}
+
+.caption3-analisis {
+    bottom: 30%; 
+    right: 16%; 
+    transform: translate(0, 0);
+    animation-delay: 0.3s;
+}
+
+.caption4 {
+    bottom: 50%; 
+    right: 13%; 
+    transform: translate(0, -20%);
+    animation-delay: 0.3s;
+}
+
+.caption4-opt {
+    bottom: 50%; 
+    right: 17%; 
+    transform: translate(0, -20%);
+    animation-delay: 0.3s;
+}
+
+.caption-rt {
+    bottom: 450px; 
+    right: 5%; 
+    transform: translate(0, -20%);
+    animation-delay: 0.3s;
+}
+
+.caption-inv {
+    bottom: 300px;
+    right: 10%; 
+    transform: translate(0, -20%);
+    animation-delay: 0.3s;
+}
+
+.caption-proto {
+    bottom: 45%; 
+    right: 20%;
+    transform: translate(0, -20%);
+    animation-delay: 0.3s;
+}
+
+/* Botones de navegación */
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Media queries para adaptabilidad en pantallas pequeñas */
+@media (max-width: 768px) {
+    .caption {
+        font-size: clamp(1rem, 2.5vw, 1.75rem); /* Ajusta el tamaño de fuente para pantallas pequeñas */
+    }
+
+    .caption1 {
+        top: 0%; 
+        left: 50%; 
+    }
+
+    .caption1-mon {
+        top: 11%; 
+        left: 14%; 
+    }
+
+    .caption2 {
+        top: 45%; 
+        left: 10;
+    }
+
+    .caption-rt {
+        top: 15%; 
+        left: 6%;
+    }
+
+    .caption3 {
+        bottom: 0%; 
+        right: 0%; 
+    }
+
+    .caption3-analisis {
+        top: 14%; 
+        left: 15%; 
+    }
+
+    .caption4 {
+        bottom: 30%; 
+        right: 5%;
+    }
+
+    .caption4-opt {
+        top: 15%; 
+        left: 15%; 
+    }
+
+    .caption-inv {
+        top: 17%; 
+        left: 15%;
+    }
+
+    .caption-proto {
+        top: 17%; 
+        left: 15%;
+    }
+    
+}
+
+
+/* Indicadores */
+
+
+.dot.active {
+    background-color: #717171;
+}
+
+/* Etiquetas de servicios */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.servicios {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se ajusten en múltiples filas */
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.servicio,
+.servicio1 {
+    flex: 1 1 calc(30% - 20px); /* Ajustar para que ocupen un 30% del ancho, menos márgenes */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border: 2px solid #ccc; /* Añadir un borde con color gris */
+    transition: transform 0.5s;
+    margin-bottom: 20px; /* Añadir margen inferior para separación */
+    position: relative; /* Para que el borde se ajuste bien */
+}
+
+.servicio {
+    color: white;
+}
+
+.servicio1 {
+    color: black;
+}
+
+.servicio1:hover,
+.servicio:hover {
+    transform: scale(1.05);
+}
+
+.servicio1 img,
+.servicio img {
+    width: 80%; /* Cambiar el ancho de la imagen al 80% */
+    height: auto;
+    border-radius: 5px;
+    margin: 0 auto; /* Centrar la imagen dentro del contenedor */
+    display: block; /* Para que el margen funcione correctamente */
+}
+
+.servicio1 h2,
+.servicio h2 {
+    margin-top: 0;
+    font-size: clamp(1.5rem, 3vw, 2rem); /* Adaptativo */
+}
+
+.servicio1 p,
+.servicio p {
+    font-size: clamp(0.875rem, 2vw, 1rem); /* Adaptativo */
+    line-height: 1.6;
+}
+
+.servicio1 a,
+.servicio a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-size: clamp(0.875rem, 2vw, 1rem); /* Adaptativo */
+}
+
+.servicio1 a {
+    background-color: rgba(228, 228, 228, 0.758);
+    color: black;
+}
+
+.servicio a {
+    background-color: white;
+    color: black;
+}
+
+.servicio1 a:hover,
+.servicio a:hover {
+    background-color: #f0f0f0;
+}
+
+/* Colores individuales para cada servicio */
+#servicio-E1 {
+    background-color: #ffffff;
+}
+
+#servicio-E2 {
+    background-color: #000000;
+}
+
+/* Media queries para adaptabilidad en pantallas pequeñas */
+@media (max-width: 768px) {
+    .servicio,
+    .servicio1 {
+        flex: 1 1 calc(45% - 20px); /* En pantallas medianas, ocupan el 45% */
+    }
+}
+
+@media (max-width: 480px) {
+    .servicio,
+    .servicio1 {
+        flex: 1 1 calc(100% - 20px); /* En pantallas pequeñas, ocupan el 100% */
+    }
+}
+
+
+/* Info servicios */ 
+
+/* Contenedor de texto e imagen */
+.container-servicio {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+.text {
+        width: 60%;
+        text-align: justify;
+        font-family: 'Times New Roman', Times, serif;
+        font-size: clamp(1rem, 2vw, 1.125rem);
+    
+}
+
+.text h1 {
+    font-size: clamp(2rem, 5vw, 3rem); /* Adaptativo */
+    margin-bottom: 20px;
+}
+
+.text .line {
+    width: 50px;
+    height: 4px;
+    background-color: #007bff;
+    margin-bottom: 20px;
+}
+
+.image {
+    width: 35%;
+    position: relative;
+}
+
+.image img {
+    width: 100%;
+    height: auto;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.image .overlay {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 123, 255, 0.7);
+    color: white;
+    padding: 0px;
+    text-align: center;
+    font-weight: bold;
+    font-size: clamp(0.875rem, 2vw, 1rem); /* Adaptativo */
+}
+
+.contact-list {
+    list-style: none;
+    padding: 0;
+}
+
+.contact-item {
+    /* Eliminado el selector anidado incorrecto */
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* Ajustado para consistencia */
+}
+
+.contact-icon {
+    width: 20px; /* Ajusta el ancho según tus necesidades */
+    height: 20px; /* Ajusta el alto según tus necesidades */
+    margin-right: 5px; /* Separación entre ícono y texto */
+}
+
+.contact-info {
+    font-size: clamp(1rem, 2vw, 1.125rem); /* Adaptativo */
+}
+
+/* Efecto */
+.reveal {
+    opacity: 0;
+    transform: translateY(100px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Barra */
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.credits {
+    background-color: #000; /* Black background */
+    color: #fff; /* White text color */
+    text-align: center;
+    padding: 15px 0; /* Padding para la barra */
+    margin-top: auto; /* Empuja la sección de créditos al fondo */
+    width: 100%;
+    position: relative;
+}
+
+.credits p {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    font-size: clamp(0.875rem, 2vw, 1rem); /* Adaptativo */
+    line-height: 1.5;
+}
+
+.contactos {
+    padding: 20px;
+    border-radius: 10px;
+    color: black; /* Cambia a blanco si deseas que el texto sea blanco */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border: 2px solid #ccc; /* Añadir un borde con color gris */
+    transition: transform 0.5s;
+    margin-bottom: 20px; /* Añadir margen inferior para separación */
+}
+
+.contactos:hover {
+    transform: scale(1.05);
+}
+
+.contactos img {
+    width: 4%; /* Cambiado a 100% para hacer la imagen completamente adaptativa */
+    height: auto; /* Mantener la proporción de la imagen */
+    border-radius: 5px;
+    display: block; /* Para que el margen funcione correctamente */
+}
+
+.contactos h2 {
+    margin-top: 0;
+    color: #1E90FF; /* Cambia el color del encabezado si lo deseas */
+    font-size: clamp(1.5rem, 3vw, 2rem); /* Adaptativo */
+}
+
+.contactos p {
+    font-size: clamp(0.875rem, 2vw, 1rem); /* Adaptativo */
+    line-height: 1.6;
+}
+
+.contactos a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: white;
+    color: black;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-size: clamp(0.875rem, 2vw, 1rem); /* Adaptativo */
+}
+
+.contactos a:hover {
+    background-color: #f0f0f0;
+}
+
+/* Media queries para adaptabilidad en pantallas pequeñas */
+@media (max-width: 768px) {
+    .contactos {
+        flex: 1 1 calc(45% - 20px); /* En pantallas medianas, ocupan el 45% */
+    }
+}
+
+@media (max-width: 480px) {
+    .contactos {
+        flex: 1 1 calc(100% - 20px); /* En pantallas pequeñas, ocupan el 100% */
+    }
+}
+
+
